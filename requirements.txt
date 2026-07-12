@@ -1,0 +1,5 @@
+neo4j>=5.28,<6
+python-dotenv>=1.0,<2
+graphdatascience==2.0a1
+matplotlib>=3.8,<4
+ipykernel>=6.29,<7
