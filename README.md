@@ -22,9 +22,38 @@ Because it's still in preview, this repo pins `graphdatascience==2.0a1` (a
 release candidate) in `requirements.txt` rather than a stable release —
 that's expected, not a typo.
 
-## Setup
+## Setup (Google Colab, recommended)
 
-1. **Python 3.9+** and a virtual environment:
+This lab runs in **Google Colab**, so there's nothing to install on your own
+machine.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/smithna/clone-hero-fastpath/blob/main/similar_song_fast_path.ipynb)
+
+1. <u>Open the notebook</u>: click the **Open in Colab** badge above (or in
+   Colab choose *File > Open notebook > GitHub* and paste this repo's URL).
+
+2. <u>Store your credentials as Colab Secrets</u>: open the **key icon** in the
+   left sidebar and add one secret per value, using these exact names:
+   `NEO4J_URI`, `NEO4J_USERNAME`, `NEO4J_PASSWORD`, `NEO4J_DATABASE`,
+   `AURA_INSTANCEID`, `AURA_CLIENT_ID`, `AURA_CLIENT_SECRET`, `AURA_PROJECT_ID`.
+   Toggle **Notebook access** on for each. You'll be handed the shared
+   `NEO4J_*`/`AURA_INSTANCEID` values for the class's Aura instance; the
+   `AURA_CLIENT_ID`/`AURA_CLIENT_SECRET`/`AURA_PROJECT_ID` are your own personal
+   Aura API credentials, used to open your own Aura Graph Analytics (GDS)
+   session. Secrets persist across your Colab sessions, so you only enter them
+   once.
+
+3. <u>Run the setup cell</u>: the first cell installs the lab dependencies into
+   the Colab runtime. The credentials cell then reads your Colab Secrets
+   automatically (and prompts you for anything it can't find). From there, just
+   follow the notebook.
+
+## Setup (local Jupyter, fallback)
+
+Prefer to run locally? The notebook detects a local kernel and skips the Colab
+install step, reading credentials from a `.env` file instead.
+
+1. <u>Python 3.9+ and a virtual environment</u>:
 
    **With [uv](https://docs.astral.sh/uv/)** (recommended):
 
@@ -42,20 +71,17 @@ that's expected, not a typo.
    pip3 install -r requirements.txt
    ```
 
-2. **Credentials** — copy `.env.example` to `.env` and fill it in:
+2. <u>Credentials</u>: copy `.env.example` to `.env` and fill it in:
 
    ```bash
    cp .env.example .env
    ```
 
-   You'll be given the shared `NEO4J_URI`/`NEO4J_USERNAME`/`NEO4J_PASSWORD`/
-   `AURA_INSTANCEID` for the class's shared Aura instance, plus your own
-   personal `AURA_CLIENT_ID`/`AURA_CLIENT_SECRET`/`AURA_PROJECT_ID` for
-   opening your own Aura Graph Analytics (GDS) session. See the comments in
-   `.env.example` for which is which.
+   See the comments in `.env.example` for which values are shared and which are
+   personal.
 
-3. **Open the notebook** in Jupyter, select the venv you just created as the
-   kernel, and follow along — `similar_song_fast_path.ipynb` has the rest of
+3. <u>Open the notebook</u>: launch Jupyter, select the venv you just created as
+   the kernel, and follow along. `similar_song_fast_path.ipynb` has the rest of
    the guidance, including discussion prompts and things to try.
 
 ## Repo layout
